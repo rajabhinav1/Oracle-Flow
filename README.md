@@ -4,7 +4,11 @@ Oracle in Move programming language
 Steps to use the Oracle framework 
 
 Download any intellij idea IDE 
+
+
 Install Aptos binary path 
+
+
 Run the program 
 
 
