@@ -4,15 +4,18 @@ module Wrapper1 {
 
 // Get empty vector 
     use 0x1::Vector;
+    
+    // creating structure types for box and vector
 
     struct Box<T> {
         value: T
     }
 
-    struct Shelf<T> {
+    struct Wrapper1<T> {
         boxes: vector<Box<T>>
     }
 
+// Assigning the values 
     public fun create_box<T>(value: T): Box<T> {
         Box { value }
     }
@@ -21,7 +24,7 @@ module Wrapper1 {
     public fun value<T: copy>(box: &Box<T>): T {
         *&box.value
     }
-
+// Assigning the box a vector
     public fun create<T>(): wrapper1<T> {
         Shelf {
             boxes: Vector::empty<Box<T>>()
@@ -44,6 +47,7 @@ module Wrapper1 {
         Vector::length<Box<T>>(&wrapper1.boxes)
     }
 }
+// The operation is same as wrapper 1 , the additional module is to make the collection more dynamic and optimize on memory allocation and speed
 
 Module Wrapper2 {
 
@@ -73,8 +77,8 @@ Module Wrapper2 {
     }
 
     // box value is moved to the vector
-    public fun put<T>(shelf: &mut Wrapper2<T>, box: Box<T>) {
-        Vector::push_back<Box<T>>(&mut shelf.boxes, box);
+    public fun put<T>(wrapper2: &mut Wrapper2<T>, box: Box<T>) {
+        Vector::push_back<Box<T>>(&mut wrapper2.boxes, box);
     }
 
     public fun remove<T>(shelf: &mut Wrapper2<T>): Box<T> {
