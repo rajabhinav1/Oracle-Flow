@@ -157,6 +157,6 @@ script {
         assert(value == 999, 1);
 
         // and print size again - 1
-        0x1::Debug::print<u64>(&Shelf::size<u64>(&shelf));
+        0x1::Debug::print<u64>(&Wrapper2::size<u64>(&wrapper2));
     }
 }
